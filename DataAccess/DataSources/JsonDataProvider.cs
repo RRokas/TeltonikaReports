@@ -3,7 +3,7 @@ using System.IO;
 using System.Text.Json;
 using DataAccess.Entities;
 
-namespace DataAccess.DataProviders
+namespace DataAccess.DataSources
 {
     public static class JsonDataProvider
     {
