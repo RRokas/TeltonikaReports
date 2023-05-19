@@ -7,9 +7,9 @@ namespace DataAccess.Tests
 {
     public class DataSourceTests
     {
-        private static readonly string TestDataRootPath = Directory.GetParent(".")!.Parent!.Parent! + @"\TestData";
-        private static readonly string JsonTestDataFilepath = @$"{TestDataRootPath}\2019-07.json";
-        private static readonly string CsvTestDataFilepath = @$"{TestDataRootPath}\2019-08.csv";
+        private static readonly string TestDataRootPath = Path.Join("..", "..", "..", "TestData"); // go up in the directories to reach project root
+        private static readonly string JsonTestDataFilepath = Path.Join(TestDataRootPath, "2019-07.json");
+        private static readonly string CsvTestDataFilepath = Path.Join(TestDataRootPath, "2019-08.csv");
         
         [Fact]
         public void JsonDataProvider_returns_correctCountOfGpsData()
