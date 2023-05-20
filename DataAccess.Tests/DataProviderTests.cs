@@ -5,7 +5,7 @@ using Xunit;
 
 namespace DataAccess.Tests
 {
-    public class DataSourceTests
+    public class DataProviderTests
     {
         private static readonly string TestDataRootPath = Path.Join("..", "..", "..", "TestData"); // go up in the directories to reach project root
         private static readonly string JsonTestDataFilepath = Path.Join(TestDataRootPath, "2019-07.json");
