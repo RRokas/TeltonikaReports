@@ -12,15 +12,15 @@ namespace DataAccess.Tests
         [Fact]
         public void JsonDataProvider_returns_correctCountOfGpsData()
         {
-            var dataFromJson = JsonDataProvider.GetData(JsonTestDataFilepath);
+            var dataFromJson = JsonDataProvider.GetData(TestData.JsonTestDataFilepath);
             Assert.Equal(23986, dataFromJson.Count);
         }
         
         [Fact]
         public void CsvDataProvider_returns_correctCountOfGpsData()
         {
-            var dataFromJson = CsvDataProvider.GetData(CsvTestDataFilepath);
-            Assert.Equal(27475, dataFromJson.Count);
+            var dataFromCsv = CsvDataProvider.GetData(TestData.CsvTestDataFilepath);
+            Assert.Equal(27475, dataFromCsv.Count);
         }
     }
 }
