@@ -9,4 +9,8 @@
       <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Geolocation.NetStandard" Version="1.1.1" />
+    </ItemGroup>
+
 </Project>
