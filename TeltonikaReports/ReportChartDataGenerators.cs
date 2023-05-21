@@ -16,7 +16,7 @@ namespace TeltonikaReports
                 .ToList();
         }
 
-        public static List<(string, int)> OrderedSpeedHistogram(List<GpsData> sourceData, int groupSize)
+        public static List<(string, int)> OrderedSpeedHistogram(List<GpsData> sourceData, int groupSize = 10)
         {
             return sourceData.GroupBy(x => Math.Floor(x.Speed / groupSize) * groupSize)
                 .Select(group 
