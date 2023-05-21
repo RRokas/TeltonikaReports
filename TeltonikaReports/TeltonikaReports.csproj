@@ -5,4 +5,12 @@
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Geolocation.NetStandard" Version="1.1.1" />
+    </ItemGroup>
+
 </Project>
