@@ -6,9 +6,9 @@ using Geolocation;
 
 namespace TeltonikaReports
 {
-    public static class ReportChartDataGenerators
+    public static class ReportDataGenerators
     {
-        public static List<(string, int)> OrderedSatelliteCountHistogram(List<GpsData> sourceData)
+        public static List<(string, int)> OrderedSatelliteCountHistogramGraphData(List<GpsData> sourceData)
         {
             return sourceData.GroupBy(gpsData => gpsData.Satellites)
                 .Select(group => (group.Key.ToString(), group.Count()))
@@ -25,7 +25,7 @@ namespace TeltonikaReports
                 .ToList();
         }
 
-        public static string FindFastestSection(List<GpsData> sourceData, int sectionLength = 100)
+        public static string FindFastestSectionGraphData(List<GpsData> sourceData, int sectionLength = 100)
         {
             var resultString = "";
             var orderedData = sourceData.OrderBy(x => x.GpsTime).ToList();
