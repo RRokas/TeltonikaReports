@@ -11,7 +11,7 @@ namespace TeltonikaReports
         {
             return sourceData.GroupBy(gpsData => gpsData.Satellites)
                 .Select(group => (group.Key.ToString(), group.Count()))
-                .OrderBy(x=>x.Item1)
+                .OrderBy(x=>Convert.ToInt32(x.Item1))
                 .ToList();
         }
 
