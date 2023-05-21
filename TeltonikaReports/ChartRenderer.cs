@@ -8,21 +8,20 @@ namespace TeltonikaReports
     {
         public static void HorizontalChart(List<(string, int)> chartData)
         {
-            var width = Console.WindowWidth;
-            var maxNameLength = chartData.Select(x => x.Item1.Length).Max();
+            const string labelSeparator = "|";
+            var maxPlainLabelLength = chartData.Select(x => x.Item1.Length).Max();
             var highestValue = chartData.Select(data => data.Item2).Max();
-            var maxWidth = width - maxNameLength-1;
+            var maxWidthForGraphCells = Console.WindowWidth - labelSeparator.Length - maxPlainLabelLength;
             
-            var singleCell = highestValue / maxWidth;
+            var singleCellSize = highestValue / maxWidthForGraphCells;
 
             foreach (var data in chartData)
             {
-                var cells = data.Item2 / singleCell;
-                var label = data.Item1;
-                label = label.PadLeft(maxNameLength);
-                
-                Console.Write(label+"|");
-                for (int j = 0; j < cells; j++)
+                var cellsToDraw = data.Item2 / singleCellSize;
+                var label = data.Item1.PadLeft(maxPlainLabelLength);
+
+                Console.Write(label+labelSeparator);
+                for (int drawnCells = 0; drawnCells < cellsToDraw; drawnCells++)
                 {
                     Console.Write("█");
                 }
