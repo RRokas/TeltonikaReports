@@ -13,7 +13,7 @@ namespace TeltonikaReports
             var highestValue = chartData.Select(data => data.Item2).Max();
             var maxWidthForGraphCells = Console.WindowWidth - labelSeparator.Length - maxPlainLabelLength;
             
-            var singleCellSize = highestValue / maxWidthForGraphCells;
+            var singleCellSize = Math.Ceiling((float)highestValue / (float)maxWidthForGraphCells);
 
             foreach (var data in chartData)
             {
