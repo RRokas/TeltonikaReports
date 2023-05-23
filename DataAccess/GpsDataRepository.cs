@@ -38,6 +38,8 @@ namespace DataAccess
                     return JsonDataProvider.GetData(DataSourceFilepath);
                 case ".CSV":
                     return CsvDataProvider.GetData(DataSourceFilepath);
+                case ".BIN":
+                    return BinaryDataProvider.GetData(DataSourceFilepath);
                 default:
                     throw new NotImplementedException("Missing implementation for file format!");
             }
