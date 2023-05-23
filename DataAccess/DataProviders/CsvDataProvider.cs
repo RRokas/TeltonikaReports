@@ -4,7 +4,7 @@ using System.Globalization;
 using System.IO;
 using DataAccess.Entities;
 
-namespace DataAccess.DataSources
+namespace DataAccess.DataProviders
 {
     public static class CsvDataProvider
     {

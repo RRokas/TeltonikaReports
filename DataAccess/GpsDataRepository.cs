@@ -2,8 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
-using DataAccess.DataSources;
+using DataAccess.DataProviders;
 using DataAccess.Entities;
 
 namespace DataAccess

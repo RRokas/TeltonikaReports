@@ -4,7 +4,7 @@ using System.IO;
 using System.Net;
 using DataAccess.Entities;
 
-namespace DataAccess.DataSources
+namespace DataAccess.DataProviders
 {
     public static class BinaryDataProvider
     {
