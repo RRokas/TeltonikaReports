@@ -25,7 +25,7 @@ namespace TeltonikaReports
                 if (reportNumber == "1")
                 {
                     Console.Clear();
-                    ChartRenderer.HorizontalChart(ReportDataGenerators.OrderedSatelliteCountHistogramGraphData(gpsDataLog));
+                    ChartRenderer.VerticalChart(ReportDataGenerators.OrderedSatelliteCountHistogramGraphData(gpsDataLog));
                 } else if (reportNumber == "2")
                 {
                     Console.Clear();
