@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
 using DataAccess.Entities;
 
 namespace DataAccess.DataSources
@@ -22,14 +24,16 @@ namespace DataAccess.DataSources
             var gpsDataLog = new List<GpsData>();
             for (var i = 0; i < allBytes.Length; i += 23)
             {
-                var gpsData = new GpsData();
-                gpsData.Latitude = BitConverter.ToInt32(allBytes, i) / 100000000f;
-                gpsData.Longitude = BitConverter.ToInt32(allBytes, i + 4) / 100000000f;
-                gpsData.GpsTime = BinToDate(BitConverter.ToInt64(allBytes, i + 8));
-                gpsData.Speed = BitConverter.ToInt16(allBytes, i + 16);
-                gpsData.Angle = BitConverter.ToInt16(allBytes, i + 18);
-                gpsData.Altitude = BitConverter.ToInt16(allBytes, i + 20);
-                gpsData.Satellites = allBytes[i + 22];
+                var gpsData = new GpsData
+                {
+                    Latitude = BitConverter.ToInt32(allBytes.Skip(i).Take(4).Reverse().ToArray(), 0) / 10000000d,
+                    Longitude = BitConverter.ToInt32(allBytes.Skip(i+4).Take(4).Reverse().ToArray(), 0) / 10000000d,
+                    GpsTime = BinToDate(BitConverter.ToInt64(allBytes.Skip(i+8).Take(8).Reverse().ToArray(), 0)),
+                    Speed = BitConverter.ToInt16(allBytes.Skip(i+16).Take(2).Reverse().ToArray(), 0),
+                    Angle = BitConverter.ToInt16(allBytes.Skip(i+18).Take(2).Reverse().ToArray(), 0),
+                    Altitude = BitConverter.ToInt16(allBytes.Skip(i+20).Take(2).Reverse().ToArray(), 0),
+                    Satellites = allBytes[i + 22]
+                };
                 gpsDataLog.Add(gpsData);
             }
             return gpsDataLog;

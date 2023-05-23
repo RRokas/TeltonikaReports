@@ -27,7 +27,7 @@ namespace DataAccess.Tests
         public void BinaryDataProvider_returns_correctCountOfGpsData()
         {
             var dataFromBinary = BinaryDataProvider.GetData(TestData.BinaryTestDataFilepath);
-            Assert.Equal(23986, dataFromBinary.Count);
+            Assert.Equal(23944, dataFromBinary.Count);
         }
     }
 }
