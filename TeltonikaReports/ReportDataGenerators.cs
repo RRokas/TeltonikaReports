@@ -20,7 +20,7 @@ namespace TeltonikaReports
         {
             return sourceData.GroupBy(x => Math.Floor(x.Speed / (double)groupSize) * groupSize)
                 .Select(group 
-                    => ($"{group.Min(gpsData => gpsData.Speed)}-{group.Max(gpsData => gpsData.Speed)}",
+                    => ($"{group.Min(gpsData => gpsData.Speed)}-{group.Max(gpsData => gpsData.Speed)} km/h ",
                         group.Count()))
                 .ToList();
         }

@@ -12,7 +12,7 @@ namespace TeltonikaReports
             const string labelSeparator = "|";
             var maxPlainLabelLength = chartData.Select(x => x.label.Length).Max();
             var highestValue = chartData.Select(data => data.value).Max();
-            var maxWidthForGraphCells = Console.WindowWidth - labelSeparator.Length - maxPlainLabelLength;
+            var maxWidthForGraphCells = Console.WindowWidth - labelSeparator.Length * 2 - maxPlainLabelLength - highestValue.ToString().Length;
             
             var singleCellSize = Math.Ceiling((float)highestValue / (float)maxWidthForGraphCells);
 
@@ -26,6 +26,7 @@ namespace TeltonikaReports
                 {
                     Console.Write("█");
                 }
+                Console.Write($"|{data.value}");
                 Console.WriteLine();
             }
         }
