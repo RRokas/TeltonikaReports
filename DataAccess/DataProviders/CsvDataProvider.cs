@@ -26,10 +26,10 @@ namespace DataAccess.DataProviders
             gpsData.Latitude = double.Parse(lineData[0], CultureInfo.InvariantCulture);
             gpsData.Longitude = double.Parse(lineData[1], CultureInfo.InvariantCulture);
             gpsData.GpsTime = DateTime.Parse(lineData[2], CultureInfo.InvariantCulture);
-            gpsData.Speed = double.Parse(lineData[3], CultureInfo.InvariantCulture);
-            gpsData.Angle = float.Parse(lineData[4], CultureInfo.InvariantCulture);
-            gpsData.Altitude = double.Parse(lineData[5], CultureInfo.InvariantCulture);
-            gpsData.Satellites = int.Parse(lineData[6], CultureInfo.InvariantCulture);
+            gpsData.Speed = short.Parse(lineData[3], CultureInfo.InvariantCulture);
+            gpsData.Angle = short.Parse(lineData[4], CultureInfo.InvariantCulture);
+            gpsData.Altitude = short.Parse(lineData[5], CultureInfo.InvariantCulture);
+            gpsData.Satellites = byte.Parse(lineData[6], CultureInfo.InvariantCulture);
             return gpsData;
         }
     }

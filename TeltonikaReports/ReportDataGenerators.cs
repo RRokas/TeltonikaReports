@@ -18,7 +18,7 @@ namespace TeltonikaReports
 
         public static List<(string, int)> OrderedSpeedHistogram(List<GpsData> sourceData, int groupSize = 10)
         {
-            return sourceData.GroupBy(x => Math.Floor(x.Speed / groupSize) * groupSize)
+            return sourceData.GroupBy(x => Math.Floor(x.Speed / (double)groupSize) * groupSize)
                 .Select(group 
                     => ($"{group.Min(gpsData => gpsData.Speed)}-{group.Max(gpsData => gpsData.Speed)}",
                         group.Count()))
