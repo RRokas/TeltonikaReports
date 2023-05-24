@@ -25,7 +25,7 @@ namespace TeltonikaReports
                 .ToList();
         }
 
-        public static string FindFastestSectionGraphData(List<GpsData> sourceData, int sectionLength = 100)
+        public static string FindFastestSectionGraphData(List<GpsData> sourceData, int sectionLengthKm = 100)
         {
             var resultString = "";
             var orderedData = sourceData.OrderBy(x => x.GpsTime).ToList();
@@ -36,10 +36,10 @@ namespace TeltonikaReports
             {
                 var innerLoopIndex = i;
                 var sectionFound = false;
-                var distance = 0.0;
+                var distanceKm = 0.0;
                 currentSection.Clear();
                 currentSection.Add(orderedData[i - 1]);
-                // iterate till we find a point that is 100km away from the current one
+                // iterate till we find a point that is specified section length away from the current one
                 while (!sectionFound && i < orderedData.Count)
                 {
                     if (innerLoopIndex == orderedData.Count)
@@ -52,8 +52,8 @@ namespace TeltonikaReports
                         orderedData[innerLoopIndex].Longitude,
                         4,
                         DistanceUnit.Kilometers);
-                    distance += currentDistance;
-                    if (distance >= sectionLength)
+                    distanceKm += currentDistance;
+                    if (distanceKm >= sectionLengthKm)
                     {
                         sectionFound = true;
                     }
@@ -71,8 +71,8 @@ namespace TeltonikaReports
                 if (sectionTime >= fastestSectionTime && fastestSectionTime != TimeSpan.Zero) continue;
                 
                 resultString = $"Time taken to cover section: {sectionTime}\n" +
-                               $"Exact distance covered: {distance}km\n" +
-                               $"Average speed calculated from distance and time: {distance / sectionTime.TotalHours}km/h\n" +
+                               $"Exact distance covered: {distanceKm}km\n" +
+                               $"Average speed calculated from distance and time: {distanceKm / sectionTime.TotalHours}km/h\n" +
                                $"Start position: {currentSection.First().Longitude}, {currentSection.First().Latitude}\n" +
                                $"Start time: {currentSection.First().GpsTime}\n" +
                                $"End position: {currentSection.Last().Longitude}, {currentSection.Last().Latitude}\n" +
