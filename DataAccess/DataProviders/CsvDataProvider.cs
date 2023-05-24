@@ -10,7 +10,7 @@ namespace DataAccess.DataProviders
     {
         public static List<GpsData> GetData(string filepath)
         {
-            var textData = File.ReadAllLines(filepath);
+            var textData = File.ReadLines(filepath);
             var gpsData = new List<GpsData>();
             foreach (var fileLine in textData)
             {
