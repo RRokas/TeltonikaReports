@@ -33,7 +33,7 @@ namespace TeltonikaReports
 
         public static void VerticalChart(List<(string label, int value)> chartData)
         {
-            var maxHeight = Console.WindowHeight - 2; // -1 offset for data labels, -1 for title,
+            var maxHeight = Console.WindowHeight - 4; // -1 offset for data labels, -1 for title,
                                                         // -2 for accounting for process finish lines (if any);
             var highestValue = chartData.Select(data => data.value).Max();
             
